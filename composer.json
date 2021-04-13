@@ -1,0 +1,17 @@
+{
+    "name": "verky/phpmvc-framework",
+    "authors": [
+        {
+            "name": "cleancodelover",
+            "email": "verkyavpeter@gmail.com"
+        }
+    ],
+    "autoload":{
+        "psr-4":{
+            "app\\":"./"
+        }
+    },
+    "require": {
+        "vlucas/phpdotenv": "^5.3"
+    }
+}
