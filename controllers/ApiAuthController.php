@@ -9,7 +9,7 @@ use app\core\Application;
 use app\core\Response;
 use app\models\Login;
 
-class AuthController extends Controller
+class ApiAuthController extends Controller
 {
     public function login(Request $request, Response $response)
     {
@@ -17,14 +17,10 @@ class AuthController extends Controller
         if ($request->isPost()) {
             $login->loadData($request->getBody());
             if ($login->validate() && $login->login()) {
-                $response->redirect('/');
-                return;
+                return 'Success';
             }
         }
-        $this->setLayout('auth');
-        return $this->render('login', [
-            'model' => $login
-        ]);
+        return 'Failed';
     }
 
     public function register(Request $request)
@@ -35,25 +31,16 @@ class AuthController extends Controller
             $user->loadData($request->getBody());
             if ($user->validate() && $user->save()) {
                 Application::$app->session->setFlash('success', 'Thanks for registering');
-                Application::$app->response->redirect('/');
                 return 'Success';
             }
-
-            return $this->render('register', [
-                'model' => $user
-            ]);
+            return 'Failed';
         }
-
-        $this->setLayout('auth');
-
-        return $this->render('register', [
-            'model' => $user
-        ]);
+        return 'Failed';
     }
 
     public function logout(Request $request, Response $response)
     {
         Application::$app->logout();
-        $response->redirect('/');
+        return 'Logged out!';
     }
 }

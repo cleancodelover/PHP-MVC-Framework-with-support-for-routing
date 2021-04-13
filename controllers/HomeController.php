@@ -6,13 +6,11 @@ use app\core\Application;
 use app\core\Controller;
 use app\core\Request;
 
-class SiteController extends Controller
+class HomeController extends Controller
 {
     public function home()
     {
-        $params = [
-            'name' => "Peter!"
-        ];
+        $params = [];
         return $this->render('home', $params);
     }
     public function contact()
