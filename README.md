@@ -27,7 +27,6 @@ Post form-data (not raw data) to
 		firstname,
 		lastname,
 		email,
-		status,
 		password,
 		confirmPassword
 
